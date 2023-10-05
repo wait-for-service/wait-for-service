@@ -1,0 +1,15 @@
+block-list-secret-scan: []
+branch: master
+directory:
+- .
+download-external-modules: false
+evaluate-variables: true
+external-modules-download-path: .external_modules
+framework:
+- python
+mask: []
+secrets-history-timeout: 12h
+secrets-scan-file-type: []
+skip-path:
+- README.md
+summary-position: top
