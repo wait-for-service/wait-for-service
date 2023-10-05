@@ -13,5 +13,5 @@ def check(url):
     try:
         KafkaProducer(bootstrap_servers=bootstrap_nodes)
         return True
-    except Exception as e:
+    except Exception:
         return False

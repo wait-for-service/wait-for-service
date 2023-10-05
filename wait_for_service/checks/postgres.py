@@ -3,14 +3,15 @@ try:
 except ImportError:
     import psycopg
 
+
 def check(url):
     if url.startswith("psql"):
-        url = "postgres" + url[len("psql") :]
+        url = "postgres" + url[4:]
 
     try:
         conn = psycopg.connect(url)
         cur = conn.cursor()
         cur.execute("SELECT NOW();")
         return True
-    except:
+    except Exception:
         return False

@@ -32,5 +32,5 @@ def check(url):
         cursor = conn.cursor()
         cursor.execute("SELECT VERSION();")
         return True
-    except:
+    except Exception:
         return False

@@ -2,8 +2,8 @@ import argparse
 import importlib
 import sys
 import time
-from urllib.parse import urlparse
 from itertools import count
+from urllib.parse import urlparse
 
 
 class WaitForService:
@@ -16,7 +16,9 @@ class WaitForService:
         scheme = parsed_url.scheme
 
         url_no_password = (
-            url.replace(parsed_url.password, "*****") if parsed_url.password else url
+            url.replace(parsed_url.password, "*****")
+            if parsed_url.password
+            else url
         )
 
         try:
@@ -24,9 +26,13 @@ class WaitForService:
             check_module = importlib.import_module(module_name)
             check = check_module.check
         except ImportError:
-            print("Unsupported scheme: {} in url: {}".format(scheme, url_no_password))
+            print(
+                "Unsupported scheme: {} in url: {}".format(
+                    scheme, url_no_password
+                )
+            )
             print("Using TCP for url: {}".format(url_no_password))
-            module_name = f"wait_for_service.checks.tcp"
+            module_name = "wait_for_service.checks.tcp"
             check_module = importlib.import_module(module_name)
             check = check_module.check
 
@@ -60,9 +66,13 @@ class WaitForService:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--interval", type=int, default=1, help="Delay between checks")
     parser.add_argument(
-        "--timeout", type=int, help="Time out in seconds for single dependency check"
+        "--interval", type=int, default=1, help="Delay between checks"
+    )
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        help="Time out in seconds for single dependency check",
     )
     parser.add_argument(
         "urls", type=str, nargs="*", help="URL of the dependency resource"

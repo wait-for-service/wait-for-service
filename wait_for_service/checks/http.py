@@ -7,5 +7,5 @@ def check(url):
         if 200 <= response.status_code < 300:
             return True
         return False
-    except:
+    except Exception:
         return False

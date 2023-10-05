@@ -1,12 +1,11 @@
 import socket
-from urllib.parse import urlparse
 
 
 def check(url):
-    filename = url[len("unix://") :]
+    filename = url[7:]
     try:
         s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         s.connect(filename)
         return True
-    except:
+    except Exception:
         return False

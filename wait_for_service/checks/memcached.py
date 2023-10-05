@@ -12,5 +12,5 @@ def check(url):
         mc = memcache.Client(["{}:{}".format(host, port)], debug=0)
         stats = mc.get_stats()
         return len(stats) > 0
-    except:
+    except Exception:
         return False

@@ -5,5 +5,5 @@ def check(url):
     try:
         pymongo.MongoClient(url)
         return True
-    except:
+    except Exception:
         return False

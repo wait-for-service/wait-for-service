@@ -25,6 +25,7 @@ pymongo = "^4.5.0"
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
 black = "^23.9.1"
+flake8 = "^6.1.0"
 
 [tool.poetry.scripts]
 wait-for-service = "wait_for_service.wait_for_service:main"

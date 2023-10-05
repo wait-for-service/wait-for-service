@@ -8,5 +8,5 @@ def check(url):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((parsed_url.hostname, parsed_url.port))
         return True
-    except:
+    except Exception:
         return False

@@ -39,7 +39,9 @@ def check(url):
         required_exchanges = query.get("require_exchange", [])
 
     try:
-        connection = pika.BlockingConnection(pika.ConnectionParameters(**config))
+        connection = pika.BlockingConnection(
+            pika.ConnectionParameters(**config)
+        )
         channel = connection.channel()
 
         for required_exchange in required_exchanges:
@@ -49,5 +51,5 @@ def check(url):
             channel.queue_declare(queue=required_queue, passive=True)
 
         return True
-    except:
+    except Exception:
         return False

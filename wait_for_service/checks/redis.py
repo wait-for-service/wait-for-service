@@ -14,7 +14,9 @@ def check(url):
         db_num = int(url_path)
 
     try:
-        redis.Redis(host=parsed_url.hostname, port=parsed_url.port or 6379, db=db_num)
+        redis.Redis(
+            host=parsed_url.hostname, port=parsed_url.port or 6379, db=db_num
+        )
         return True
-    except Exception as e:
+    except Exception:
         return False
