@@ -9,53 +9,22 @@ on:
     branches:
       - "*"
 jobs:
-  meta:
-    runs-on: ubuntu-latest
+  release:
     permissions:
-      contents: write
-      issues: write
-    outputs:
-      version: ${{ steps.version.outputs.new_release_version }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - name: Semantic Release
-        id: version
-        uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          dry_run: true
-          semantic_version: 19.0.5
-          extra_plugins: |
-            @semantic-release/commit-analyzer@9.0.2
-            @semantic-release/release-notes-generator@10.0.3
-            @semantic-release/git@10.0.1
-            @semantic-release/github@8.1.0
-            @semantic-release/changelog@6.0.3
-            conventional-changelog-conventionalcommits@6.1.0
-            @semantic-release/exec@6.0.3
-  runTests:
-    permissions:
+      actions: write
       contents: write
       issues: write
     runs-on: ubuntu-latest
-    needs: [meta]
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-          cache: "pip"
+      # - uses: actions/setup-python@v4
+      #   with:
+      #     python-version: "3.11"
+      #     cache: "pip"
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+      # - name: Install Poetry
+      #   uses: snok/install-poetry@v1
 
       - uses: actions/setup-node@v3
         with:
@@ -66,12 +35,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          semantic_version: 19.0.5
+          semantic_version: 22
           extra_plugins: |
-            @semantic-release/commit-analyzer@9.0.2
-            @semantic-release/release-notes-generator@10.0.3
             @semantic-release/git@10.0.1
-            @semantic-release/github@8.1.0
             @semantic-release/changelog@6.0.3
             conventional-changelog-conventionalcommits@6.1.0
             @semantic-release/exec@6.0.3
+            semantic-release-replace-plugin
