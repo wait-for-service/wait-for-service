@@ -14,17 +14,19 @@ jobs:
       actions: write
       contents: write
       issues: write
+      id-token: write
+    environment: release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: actions/setup-python@v4
-      #   with:
-      #     python-version: "3.11"
-      #     cache: "pip"
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
 
-      # - name: Install Poetry
-      #   uses: snok/install-poetry@v1
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
 
       - uses: actions/setup-node@v3
         with:
@@ -42,3 +44,5 @@ jobs:
             conventional-changelog-conventionalcommits@6.1.0
             @semantic-release/exec@6.0.3
             semantic-release-replace-plugin
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
