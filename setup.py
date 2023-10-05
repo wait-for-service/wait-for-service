@@ -55,7 +55,7 @@ def get_long_description():
         return fh.read()
 
 def get_version():
-    with open(path.join(path.dirname(__file__), "wait_for_dep", "VERSION"), "r", encoding="utf-8") as f:
+    with open(path.join(path.dirname(__file__), "wait_for_service", "VERSION"), "r", encoding="utf-8") as f:
         return f.read().strip()
 
 
@@ -63,7 +63,7 @@ setup(
     name="wait-for-dep",
     entry_points={
         "console_scripts": [
-            "wait-for-dep = wait_for_dep.wait_for_dep:main",
+            "wait-for-dep = wait_for_service.wait_for_service:main",
         ],
     },
     version=get_version(),

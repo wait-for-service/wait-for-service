@@ -1,5 +1,0 @@
-include wait_for_dep/VERSION
-recursive-include requirements *.txt
-
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]

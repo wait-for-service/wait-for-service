@@ -22,7 +22,7 @@ jobs:
 
     - name: Set version
       run: |
-        echo -n ${GITHUB_REF} | cut -f3- -d/ > ./wait_for_dep/VERSION
+        echo -n ${GITHUB_REF} | cut -f3- -d/ > ./wait_for_service/VERSION
 
     - name: Build a 📦
       run: |
