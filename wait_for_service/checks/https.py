@@ -1,5 +1,1 @@
-from .http import check as http_check
-
-
-def check(url):
-    http_check(url)
+from .http import check  # noqa F401
