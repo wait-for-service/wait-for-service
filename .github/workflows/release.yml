@@ -2,7 +2,9 @@ name: release
 
 on:
   release:
-    types: [published,prereleased]
+    types:
+      - published
+      - prereleased
 
 jobs:
   pypi-publish:
@@ -28,31 +30,3 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-  build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.9
-
-    - name: Install pypa/build
-      run: |
-        python -m pip install build --user
-
-    - name: Set version
-      run: |
-        echo -n ${GITHUB_REF} | cut -f3- -d/ > ./wait_for_service/VERSION
-
-    - name: Build a 📦
-      run: |
-        python -m build
-
-    - name: Publish distribution 📦 to PyPI
-      if: startsWith(github.ref, 'refs/tags')
-      uses: pypa/gh-action-pypi-publish@release/v1.5
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
