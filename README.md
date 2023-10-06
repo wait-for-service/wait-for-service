@@ -175,7 +175,14 @@ pip install wait-for-service[kafka]
 
 ### Accepted URL schemas
 
-* kafka://
+If port is not specified 9092 will be assumed, topic is optional but recommended
+
+* kafka://bootstrap-host
+* kafka://bootstrap-host:9092
+* kafka://bootstrap-host,bootstrap-host2:9092
+* kafka://bootstrap-host/topic
+* kafka://bootstrap-host:9092/topic
+* kafka://bootstrap-host,bootstrap-host2:9092/topic
 
 ### Example
 
