@@ -1,17 +1,26 @@
-from urllib.parse import urlparse
-
-from kafka import KafkaProducer
+from furl import furl
+from kafka import KafkaConsumer
 
 
 def check(url):
-    bootstrap_urls = url.split(",")
-    bootstrap_parsed_urls = (urlparse(u) for u in bootstrap_urls)
-    bootstrap_nodes = list(
-        u.hostname + ":" + str(u.port or "9092") for u in bootstrap_parsed_urls
-    )
+    parsedUrL = furl(url)
+    bootstrap_hosts = parsedUrL.host.split(",")
+    bootstrap_nodes = []
+    if parsedUrL.port:
+        port = parsedUrL.port
+    else:
+        port = 9092
+    for u in bootstrap_hosts:
+        bootstrap_nodes.append(f"{u}:{port}")
 
     try:
-        KafkaProducer(bootstrap_servers=bootstrap_nodes)
+        connection = KafkaConsumer(bootstrap_servers=bootstrap_nodes)
+        if parsedUrL.path not in ("", None, "/"):
+            if parsedUrL.path in connection.topics:
+                return True
+            else:
+                return False
+
         return True
     except Exception:
         return False

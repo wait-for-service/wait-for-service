@@ -226,6 +226,21 @@ pycodestyle = ">=2.11.0,<2.12.0"
 pyflakes = ">=3.1.0,<3.2.0"
 
 [[package]]
+name = "furl"
+version = "2.1.3"
+description = "URL manipulation made simple."
+optional = false
+python-versions = "*"
+files = [
+    {file = "furl-2.1.3-py2.py3-none-any.whl", hash = "sha256:9ab425062c4217f9802508e45feb4a83e54324273ac4b202f1850363309666c0"},
+    {file = "furl-2.1.3.tar.gz", hash = "sha256:5a6188fe2666c484a12159c18be97a1977a71d632ef5bb867ef15f54af39cc4e"},
+]
+
+[package.dependencies]
+orderedmultidict = ">=1.0.1"
+six = ">=1.8.0"
+
+[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -327,6 +342,20 @@ compression = ["lz4 (>=2.1.6,<=4.3.2)", "zstandard (>=0.12.0,<=0.19.0)"]
 dns-srv = ["dnspython (>=1.16.0,<=2.3.0)"]
 gssapi = ["gssapi (>=1.6.9,<=1.8.2)"]
 opentelemetry = ["Deprecated (>=1.2.6)", "typing-extensions (>=3.7.4)", "zipp (>=0.5)"]
+
+[[package]]
+name = "orderedmultidict"
+version = "1.0.1"
+description = "Ordered Multivalue Dictionary"
+optional = false
+python-versions = "*"
+files = [
+    {file = "orderedmultidict-1.0.1-py2.py3-none-any.whl", hash = "sha256:43c839a17ee3cdd62234c47deca1a8508a3f2ca1d0678a3bf791c87cf84adbf3"},
+    {file = "orderedmultidict-1.0.1.tar.gz", hash = "sha256:04070bbb5e87291cc9bfa51df413677faf2141c73c61d2a5f7b26bea3cd882ad"},
+]
+
+[package.dependencies]
+six = ">=1.8.0"
 
 [[package]]
 name = "packaging"
@@ -753,6 +782,17 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.8.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -816,4 +856,4 @@ websockets = ["websocket-server"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a69ca801fc1c02d1558cd19cdf405a4935a5bffd00bdf30f22664bd3ce4ab717"
+content-hash = "6ed734cb910cd0083117b583135a3f1af8645817afab782c7f1cb0c4d0a94b8a"
